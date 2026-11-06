@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مركز المحتوى الآلي | مقالات وأدلة</title>
+<meta name="description" content="موقع محتوى يتجدد تلقائيًا: مقالات وأدلة في مواضيع مختارة.">
+<style>
+  :root{--bg:#0f172a;--card:#1e293b;--txt:#e2e8f0;--acc:#38bdf8}
+  *{box-sizing:border-box;font-family:'Segoe UI',Tahoma,sans-serif}
+  body{margin:0;background:var(--bg);color:var(--txt);line-height:1.8}
+  header{padding:2rem;text-align:center;border-bottom:1px solid #334155}
+  header h1{color:var(--acc);margin:0}
+  main{max-width:900px;margin:2rem auto;padding:0 1rem}
+  .card{background:var(--card);border-radius:12px;padding:1.2rem;margin:1rem 0}
+  .card h2{margin-top:0;color:var(--acc)}
+  footer{text-align:center;padding:2rem;color:#64748b;border-top:1px solid #334155}
+  a{color:var(--acc)}
+</style>
+</head>
+<body>
+<header>
+  <h1>📚 شروع DY — محتوى مؤتمت</h1>
+  <p>مقالات وأدلة تتجدد تلقائيًا يوميًا</p>
+</header>
+<main id="articles">
+  <div class="card"><h2>قريبًا</h2><p>شغّل <code>python scripts/generate_content.py</code> لتوليد أول المقالات.</p></div>
+</main>
+<footer>© 2026 — Automated Content Hub</footer>
+<script>
+// Load generated article list dynamically
+fetch('articles/index.json').then(r=>r.json()).then(list=>{
+  const m=document.getElementById('articles');m.innerHTML='';
+  list.forEach(a=>{
+    m.innerHTML+=`<div class="card"><h2><a href="articles/${a.file}">${a.title}</a></h2><p>${a.excerpt}</p></div>`;
+  });
+}).catch(()=>{});
+</script>
+</body>
+</html>
